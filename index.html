@@ -96,6 +96,20 @@
         
     </section>
 
+    <!-- Hero Slider Section -->
+    <section class="hero-slider-section">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('3.jpg');"></div>
+        </div>
+        <div class="hero-slider-nav">
+            <button class="slider-dot active" onclick="goToSlide(0)"></button>
+            <button class="slider-dot" onclick="goToSlide(1)"></button>
+            <button class="slider-dot" onclick="goToSlide(2)"></button>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -155,6 +169,33 @@
                 logoPopup.classList.remove('active');
             });
         }
+
+        // Hero Slider - Auto Slide
+        (function() {
+            const sliderSection = document.querySelector('.hero-slider-section');
+            if (!sliderSection) return;
+            
+            const slides = sliderSection.querySelectorAll('.hero-slide');
+            const dots = sliderSection.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            window.goToSlide = function(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            };
+            
+            function nextSlide() {
+                const next = (currentSlide + 1) % totalSlides;
+                goToSlide(next);
+            }
+            
+            // Auto slide every 5 seconds
+            setInterval(nextSlide, 5000);
+        })();
     </script>
 </body>
 </html>

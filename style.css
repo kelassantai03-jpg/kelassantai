@@ -319,6 +319,136 @@ button, .btn, .cta-button {
     animation: heroFadeIn 1s ease forwards;
 }
 
+/* Hero Slider - Behind Content */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 14, 26, 0.7) 0%, rgba(17, 24, 39, 0.6) 50%, rgba(15, 23, 42, 0.7) 100%);
+}
+
+/* Hero Slider Section - Below Hero */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 800px;
+    min-height: 500px;
+    overflow: hidden;
+    background: #0a0e1a;
+}
+
+.hero-slider-section .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.hero-slider-section .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.hero-slider-section .hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slider-section .hero-slide img {
+    display: none;
+}
+
+.hero-slider-section .hero-slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.hero-slider-section .hero-slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.hero-slider-section .slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-slider-section .slider-dot.active {
+    background: var(--accent-blue);
+    transform: scale(1.2);
+}
+
+.hero-slider-section .slider-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-slider-section .hero-slide img {
+    display: none;
+}
+
+/* Hero Content - On Top */
+.hero-content {
+    text-align: center;
+}
+
 @keyframes heroFadeIn {
     from {
         opacity: 0;
@@ -701,6 +831,7 @@ section {
 .article-image {
     width: 100%;
     height: auto;
+    min-height: 300px;
     display: block;
     filter: brightness(1) contrast(1.05) saturate(1.1);
 }
@@ -1822,11 +1953,8 @@ section {
 
     /* Hero Mobile */
     .hero {
-        padding: 70px 12px 30px !important;
+        padding: 70px 12px 60px !important;
         min-height: auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
     }
 
     .hero-content {
@@ -1870,6 +1998,16 @@ section {
         font-size: 13px !important;
         justify-content: center !important;
         min-height: 44px !important;
+    }
+
+    /* Hero Slider Mobile */
+    .hero-slider-nav {
+        bottom: 15px !important;
+    }
+
+    .slider-dot {
+        width: 10px !important;
+        height: 10px !important;
     }
 
     /* Cards Mobile */
@@ -2049,7 +2187,8 @@ section {
     .article-image {
         width: 100% !important;
         height: auto !important;
-        max-height: 40vh !important;
+        max-height: 50vh !important;
+        min-height: 200px !important;
         object-fit: cover !important;
     }
 
@@ -2070,6 +2209,27 @@ section {
     h4 { font-size: clamp(18px, 3.5vw, 22px) !important; }
     h5 { font-size: 16px !important; }
     h6 { font-size: 14px !important; }
+
+    /* Hero Slider Section Mobile - 70vh, background-position top */
+    .hero-slider-section {
+        height: 70vh !important;
+        min-height: 350px !important;
+    }
+
+    .hero-slider-section .hero-slide {
+        background-position: center top !important;
+        background-size: cover !important;
+    }
+
+    .hero-slider-section .hero-slider-nav {
+        bottom: 15px !important;
+        opacity: 0.6;
+    }
+
+    .hero-slider-section .slider-dot {
+        width: 8px !important;
+        height: 8px !important;
+    }
 }
 
 /* Tablet Responsive */
